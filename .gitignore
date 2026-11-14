@@ -1,0 +1,33 @@
+﻿# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Backend - Java / Maven
+nexora-backend/target/
+nexora-backend/build/
+
+# Never commit local backend configuration
+nexora-backend/src/main/resources/application.properties
+nexora-backend/src/main/resources/application-local.properties
+
+# Uploaded files
+nexora-backend/uploads/
+uploads/
+
+# Frontend - Node / Vite
+nexora-frontend/node_modules/
+nexora-frontend/dist/
+nexora-frontend/.vite/
+
+# IDE files
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

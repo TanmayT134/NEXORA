@@ -1,0 +1,2 @@
+import { Link } from "react-router-dom";
+export default function NotFound(){return <div className="not-found"><div className="eyebrow">NOT FOUND</div><h1>404</h1><p>This page isn't part of your current NEXORA workspace.</p><Link className="btn btn-primary" to="/">Return to NEXORA</Link></div>}

@@ -1,0 +1,71 @@
+
+package com.nexora.nexora_backend.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "resume_experiences")
+@Getter
+@Setter
+@NoArgsConstructor
+public class ResumeExperience {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+        name = "resume_analysis_id",
+        nullable = false
+    )
+    private ResumeAnalysis resumeAnalysis;
+
+    @Column(name = "job_title", nullable = false, length = 150)
+    private String jobTitle;
+
+    @Column(name = "company_name", length = 150)
+    private String companyName;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "employment_type", length = 30)
+    private EmploymentType employmentType;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "start_date_precision", length = 10)
+    private DatePrecision startDatePrecision;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "end_date_precision", length = 10)
+    private DatePrecision endDatePrecision;
+
+    @Column(name = "currently_working", nullable = false)
+    private Boolean currentlyWorking = false;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(name = "technologies_used", columnDefinition = "TEXT")
+    private String technologiesUsed;
+}
